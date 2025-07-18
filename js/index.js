@@ -1,35 +1,36 @@
+const formEl=document.querySelector(".form")
+const username=document.querySelector(".username")
+const email=document.querySelector(".email")
+const phone_number=document.querySelector(".phone_number")
+const message=document.querySelector(".message")
+const tbodyEl=document.querySelector("tbody")
 
-const inputName = document.querySelector(".input-name");
-const inputProfession = document.querySelector(".input-profession");
-const tbodyEl = document.querySelector(".table tbody");
+let data=[]
 
-const data = [];
-
-
-formEl.addEventListener("submit", (event) => {
+formEl.addEventListener("submit",(event)=>{
     event.preventDefault();
-    let user = {
+    let user={
         id: new Date().getTime(),
-        name: inputName.value,
-        profession: inputProfession.value,
+        name:username.value,
+        email:email.value,
+        phone:phone_number.value,
+        message:message.value
     };
     data.push(user);
     createTableRow(data);
-    inputName.value = ""
+})
 
-});
-
- function createTableRow(data){
-    tbodyEl.innerHTML = null;
-    data.forEach((item, index) => {
-        const trEl = document.createElement("tr");
-        trEl.innerHTML = `
+function createTableRow(data){
+    tbodyEl.innerHtml=null;
+    data.forEach((item,index)=>{
+        const trEl=document.createElement("tr")
+        trEl.innerHTML=`
         <td>${index+1}</td>
         <td>${item.name}</td>
-        <td>${item.profession}</td>
-                <td>${item.profession}</td>       
-       
-       `;
-       tbodyEl.appendChild(trEl);
-   });
- }
+        <td>${item.email}</td>
+        <td>${item.phone}</td>
+        <td>${item.message}</td>
+        `;
+        tbodyEl.appendChild(trEl)
+    })
+}
