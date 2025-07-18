@@ -21,7 +21,7 @@ formEl.addEventListener("submit",(event)=>{
 })
 
 function createTableRow(data){
-    tbodyEl.innerHtml=null;
+    tbodyEl.innerHtml="";
     data.forEach((item,index)=>{
         const trEl=document.createElement("tr")
         trEl.innerHTML=`
